@@ -13,9 +13,13 @@ namespace Homework_1 {
             string userInput = Console.ReadLine();
             int nominal = Int32.Parse(userInput);
 
+            Console.WriteLine("Input the Original price");
+            userInput = Console.ReadLine();
+            double originalPrice = Double.Parse(userInput) ;
+
             Console.WriteLine("Input the tradeprice");
             userInput = Console.ReadLine();
-            double tradePrice = Double.Parse(userInput) ;
+            double tradePrice = Double.Parse(userInput);
 
             TransactionType trcType;
             Console.WriteLine("Input the transaction type");
@@ -23,12 +27,16 @@ namespace Homework_1 {
             trcType = (TransactionType)Enum.Parse(typeof(TransactionType), userInput, true);
 
             double currentValue = 0.0d;
-            if (trcType == TransactionType.Buy)
-                currentValue = nominal * tradePrice;
-            else 
-                 currentValue = nominal * tradePrice*-1;
+
+            currentValue = 
+            trcType == TransactionType.Buy ? currentValue = nominal * tradePrice: currentValue = nominal * tradePrice*-1;
+
+            double PL = 0.0d;
+             PL= nominal * (tradePrice - originalPrice);
+
 
             Console.WriteLine($" The Current Value is:{currentValue}");
+            Console.WriteLine($" The PL Value is:{PL}");
             Console.ReadKey();
 
 
